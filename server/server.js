@@ -1,13 +1,16 @@
 const express = require('express');
 const connectDB = require('./config/db.js');
 const { configDotenv } = require('dotenv');
+const cors = require('cors')
 const productRoute = require('./routes/productRoutes.js');
 configDotenv();
 
 
 const app = express();
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json())
 
+// Router endpath 
 app.use('/api/j1', productRoute);
 
 
