@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -15,16 +15,16 @@ const Home = () => {
             <p className='text-gray-300 text-lg max-w-xl'>Discover premium fashion, accessories, and tech essentials crafted for modern living. Style meets performance.</p>
 
             <div className='flex flex-col sm:flex-row gap-4'>
-              <a
-                href='#shop'
+              <Link
+                to='/carts'
                 className='bg-[#14BDAD] text-white px-6 py-3 rounded-xl font-medium shadow-lg transition hover:bg-linear-to-r hover:from-[#14BDAD] hover:to-[#0FA297]'
               >
                 Shop Collection
-              </a>
+              </Link>
 
-              <a href='#explore' className='border border-gray-600 hover:border-white px-6 py-3 rounded-xl font-medium transition'>
+              <Link to='/product-list' className='border border-gray-600 hover:border-white px-6 py-3 rounded-xl font-medium transition'>
                 Explore More
-              </a>
+              </Link>
             </div>
 
             {/* Stats */}
