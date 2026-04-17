@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <section className='bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white mb-20'>
+    <section className='bg-linear-to-br from-gray-900 via-gray-800 to-black text-white mb-20'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8 py-20'>
         {/* Modern Grid Layout */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
@@ -17,7 +17,7 @@ const Home = () => {
             <div className='flex flex-col sm:flex-row gap-4'>
               <a
                 href='#shop'
-                className='bg-[#14BDAD] text-white px-6 py-3 rounded-xl font-medium shadow-lg transition hover:bg-gradient-to-r hover:from-[#14BDAD] hover:to-[#0FA297]'
+                className='bg-[#14BDAD] text-white px-6 py-3 rounded-xl font-medium shadow-lg transition hover:bg-linear-to-r hover:from-[#14BDAD] hover:to-[#0FA297]'
               >
                 Shop Collection
               </a>
