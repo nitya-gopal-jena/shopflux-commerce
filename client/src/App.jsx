@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar/Navbar';
 import PublicRoutes from './components/routes/PublicRoutes';
 import ProductRoutes from './components/routes/ProductRoutes';
+
+import AdminDashboard from './components/pages/admin/AdminDashboard';
 
 const App = () => {
   return (
@@ -11,6 +13,8 @@ const App = () => {
         <Routes>
           {PublicRoutes()}
           {ProductRoutes()}
+
+          <Route path='/admin-dashboard' element={<AdminDashboard />} />
         </Routes>
       </Router>
     </>
