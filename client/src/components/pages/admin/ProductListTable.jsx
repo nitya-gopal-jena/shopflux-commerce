@@ -1,13 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProductListTable = () => {
-  // product data
-  const products = [
-    { id: 1, name: 'Laptop', category: 'Electronics', price: '$1200', stock: 15 },
-    { id: 2, name: 'Shoes', category: 'Fashion', price: '$80', stock: 50 },
-    { id: 3, name: 'Coffee Maker', category: 'Home Appliances', price: '$150', stock: 20 },
-  ];
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  const fetchAllProducts = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/j1/getAllProd');
+      setProducts(res?.data?.allProducts);
+    } catch (error) {
+      console.log('Error while fetching all product data', error);
+    }
+  };
+
+  const updateProduct = (id) => {
+    navigate(`/products/update-prod/${id}`);
+  };
+
+  const deleteProduct = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this product ?');
+    if (!confirmDelete) return;
+
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/j1/product/${id}`);
+      alert(response.data.message);
+      window.location.reload();
+    } catch (error) {
+      console.log('Something wrong', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
 
   return (
     <>
@@ -26,9 +54,9 @@ const ProductListTable = () => {
 
           <tbody className='divide-y divide-gray-100'>
             {products.map((prod) => (
-              <tr key={prod.id} className='hover:bg-gray-50 transition'>
+              <tr key={prod._id} className='hover:bg-gray-50 transition'>
                 {/* NAME */}
-                <td className='px-6 py-4 font-medium text-gray-900'>{prod.name}</td>
+                <td className='px-6 py-4 font-medium text-gray-900'>{prod.productName}</td>
 
                 {/* CATEGORY */}
                 <td className='px-6 py-4 text-gray-600'>{prod.category}</td>
@@ -55,7 +83,7 @@ const ProductListTable = () => {
                 <td className='px-6 py-4'>
                   <div className='flex justify-center gap-2'>
                     <button
-                      onClick={() => updateProduct(prod.id)}
+                      onClick={() => updateProduct(prod._id)}
                       className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg 
                                 bg-gradient-to-b from-indigo-50 to-indigo-100/70 
                                text-indigo-700 text-xs font-medium
@@ -70,7 +98,7 @@ const ProductListTable = () => {
                     </button>
 
                     <button
-                      onClick={() => deleteProduct(prod.id)}
+                      onClick={() => deleteProduct(prod._id)}
                       className='flex items-center gap-1.5 px-3 py-1.5 rounded-lg 
                                 bg-gradient-to-b from-red-50 to-red-100/70 
                                 text-red-600 text-xs font-medium

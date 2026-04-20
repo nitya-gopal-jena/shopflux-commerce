@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   ];
 
   // Handlers
-  const addProduct = () => navigate('/create-prod');
+  const addProduct = () => navigate('/products/create-prod');
   const updateProduct = (id) => navigate(`/update-prod/${id}`);
   const deleteProduct = (id) => navigate(`/delete-prod/${id}`);
 

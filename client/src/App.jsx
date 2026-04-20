@@ -11,9 +11,8 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          {PublicRoutes()}
-          {ProductRoutes()}
-
+          <Route path='/*' element={<PublicRoutes />} />
+          <Route path='/products/*' element={<ProductRoutes />} />
           <Route path='/admin-dashboard' element={<AdminDashboard />} />
         </Routes>
       </Router>
