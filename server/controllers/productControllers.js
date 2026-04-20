@@ -5,7 +5,7 @@ const Product = require('../models/productModel.js')
 const addProduct = async (req, res) => {
     try {
 
-        const { productName, brand, price, rating, description, category,  subCategory } = req.body;
+        const { productName, brand, price, rating, description, category, subCategory } = req.body;
         if (!productName || !brand || !price || !rating || !description || !category || !subCategory) {
             return res.status(400).json({ message: 'Provide all the fields' });
         }

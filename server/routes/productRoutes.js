@@ -7,7 +7,7 @@ productRoute.post('/add-prod', addProduct);
 productRoute.get('/getAllProd', getallProducts);
 productRoute.get('/getProd/:id', getProductById);
 productRoute.put('/update-prod/:id', updateProduct);
-productRoute.delete('/:id', deleteProduct)
+productRoute.delete('/product/:id', deleteProduct)
 
 
 
